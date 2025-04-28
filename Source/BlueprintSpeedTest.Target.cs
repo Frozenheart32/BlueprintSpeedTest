@@ -9,7 +9,9 @@ public class BlueprintSpeedTestTarget : TargetRules
 	{
 		Type = TargetType.Game;
 		DefaultBuildSettings = BuildSettingsVersion.V5;
-		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_5;
+		IncludeOrderVersion = EngineIncludeOrderVersion.Latest;
+		bLegacyParentIncludePaths = false;
+		CppStandard = CppStandardVersion.Latest;
 		ExtraModuleNames.Add("BlueprintSpeedTest");
 	}
 }
