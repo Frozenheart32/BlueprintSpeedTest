@@ -3,6 +3,8 @@
 
 #include "Core/BSTSpeedTester.h"
 
+#include "Kismet/KismetMathLibrary.h"
+
 UBSTSpeedTester* UBSTSpeedTester::StartSpeedTest(UObject* WorldContextObject)
 {
 	check(WorldContextObject);
@@ -13,23 +15,10 @@ UBSTSpeedTester* UBSTSpeedTester::StartSpeedTest(UObject* WorldContextObject)
 
 void UBSTSpeedTester::StartTest()
 {
-	TickDelegateHandle = FTSTicker::GetCoreTicker()
-		.AddTicker(
-			FTickerDelegate::CreateUObject(this, &UBSTSpeedTester::OnTick),
-			0.0f
-			); // Интервал (0 = каждый кадр))
-}
-
-bool UBSTSpeedTester::OnTick(float DeltaTime)
-{
-	Time += DeltaTime;
-
-	return true;
+	StartTime = FDateTime::Now();
 }
 
 float UBSTSpeedTester::StopSpeedTest()
 {
-	FTSTicker::GetCoreTicker().RemoveTicker(TickDelegateHandle);
-	this->ConditionalBeginDestroy();
-	return Time;
+	return UKismetMathLibrary::GetTotalMilliseconds(FDateTime::Now() - StartTime);
 }

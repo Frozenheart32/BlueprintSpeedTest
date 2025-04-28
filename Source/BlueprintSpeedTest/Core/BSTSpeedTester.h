@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(NotBlueprintable, BlueprintType)
 class BLUEPRINTSPEEDTEST_API UBSTSpeedTester : public UObject
 {
 	GENERATED_BODY()
@@ -17,7 +17,7 @@ class BLUEPRINTSPEEDTEST_API UBSTSpeedTester : public UObject
 private:
 
 	UPROPERTY()
-	float Time = 0.f;
+	FDateTime StartTime = {};
 	
 	FTSTicker::FDelegateHandle TickDelegateHandle;
 
@@ -29,12 +29,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Speed Test")
 	float StopSpeedTest();
 
-
 private:
 
 	UFUNCTION()
 	void StartTest();
-
-	UFUNCTION()
-	bool OnTick(float DeltaTime);
 };
