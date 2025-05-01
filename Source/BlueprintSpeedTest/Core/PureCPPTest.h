@@ -39,4 +39,6 @@ private:
 
 	UFUNCTION()
 	int32 Fibonacci(int32 Number) const;
+	UFUNCTION()
+	int32 FibonacciIter(int32 Number) const;
 };

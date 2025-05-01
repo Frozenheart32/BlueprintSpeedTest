@@ -29,3 +29,22 @@ int32 AHybridTest::Fibonacci(int32 Number) const
 	
 	return Fibonacci(Number - 1) + Fibonacci(Number - 2);
 }
+
+int32 AHybridTest::FibonacciIter(int32 Number) const
+{
+	if(Number <= 1)
+		return Number;
+
+	int32 A = 0;
+	int32 B = 1;
+	int32 C = 0;
+	const int32 Limit = Number + 1;
+	for (int32 i = 2; i < Limit; i++)
+	{
+		C = A + B;
+		A = B;
+		B = C;
+	}
+
+	return B;
+}

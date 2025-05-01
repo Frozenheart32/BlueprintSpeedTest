@@ -19,6 +19,7 @@ public:
 	AHybridTest();
 
 protected:
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TObjectPtr<UBoxComponent> BoxCollision;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
@@ -30,4 +31,6 @@ protected:
 	UFUNCTION(BlueprintCallable, Category = "HybridTest")
 	int32 Fibonacci(int32 Number) const;
 
+	UFUNCTION(BlueprintCallable, Category = "HybridTest")
+	int32 FibonacciIter(int32 Number) const;
 };
