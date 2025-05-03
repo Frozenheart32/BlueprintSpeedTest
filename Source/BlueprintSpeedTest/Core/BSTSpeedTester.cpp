@@ -18,7 +18,11 @@ void UBSTSpeedTester::StartTest()
 	StartTime = FDateTime::Now();
 }
 
-float UBSTSpeedTester::StopSpeedTest()
+float UBSTSpeedTester::StopSpeedTest(bool bSelfDestroy)
 {
-	return UKismetMathLibrary::GetTotalMilliseconds(FDateTime::Now() - StartTime);
+	const float Duration = UKismetMathLibrary::GetTotalMilliseconds(FDateTime::Now() - StartTime);
+	if(bSelfDestroy)
+		this->ConditionalBeginDestroy();
+	
+	return Duration;
 }

@@ -18,8 +18,6 @@ private:
 
 	UPROPERTY()
 	FDateTime StartTime = {};
-	
-	FTSTicker::FDelegateHandle TickDelegateHandle;
 
 public:
 
@@ -27,7 +25,7 @@ public:
 	static UBSTSpeedTester* StartSpeedTest(UObject* WorldContextObject);
 
 	UFUNCTION(BlueprintCallable, Category = "Speed Test")
-	float StopSpeedTest();
+	float StopSpeedTest(bool bSelfDestroy = true);
 
 private:
 

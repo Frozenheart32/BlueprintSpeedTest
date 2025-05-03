@@ -6,6 +6,7 @@
 #include "BSTSpeedTester.h"
 #include "Components/BoxComponent.h"
 #include "Components/TextRenderComponent.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "Util/BSTHelperMethodsFunctionLibrary.h"
 
 // Sets default values
@@ -45,8 +46,8 @@ void APureCPPTest::OnStartTest(UPrimitiveComponent* OverlappedComponent, AActor*
 	const auto SpeedTestTimer = UBSTSpeedTester::StartSpeedTest(this);
 	const int32 Result = FibonacciIter(FibonacciNumber);
 	const float Duration = SpeedTestTimer->StopSpeedTest();
-	
-	UBSTHelperMethodsFunctionLibrary::PrintTestResults(this, *GetNameSafe(this), FibonacciNumber, Result,  Duration, true);
+	const FString DisplayName = UKismetSystemLibrary::GetDisplayName(this);
+	UBSTHelperMethodsFunctionLibrary::PrintTestResults(this, *DisplayName, FibonacciNumber, Result,  Duration, true);
 }
 
 int32 APureCPPTest::Fibonacci(int32 Number) const
